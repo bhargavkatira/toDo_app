@@ -81,7 +81,7 @@ function App() {
             </div>
           ))
         ) : (
-          <p>You currently have no tasks</p>
+          <p className="no-task">You currently have no tasks</p>
         )}
       </div>
       <div className="addPopup" onClick={() => setPopupActive(true)}>

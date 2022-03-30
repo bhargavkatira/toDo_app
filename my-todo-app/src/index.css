@@ -43,13 +43,13 @@ h4 {
     var(--secondary),
     var(--light)
   );
-  width: 70%;
+  width: 60%;
   margin: auto;
   border-radius: 10px;
   padding: 16px;
 }
 .todo {
-  width: 80%;
+  width: 60%;
   margin: auto;
   position: relative;
   background-color: var(--dark);
@@ -101,6 +101,12 @@ h4 {
   visibility: hidden;
 }
 
+.no-task {
+  font-size: 20px;
+  font-weight: 500;
+  color: var(--dark);
+  text-transform: capitalize;
+}
 /*---todo-delete---*/
 .todos .delete-todo {
   position: absolute;
@@ -116,7 +122,6 @@ h4 {
   align-items: center;
   justify-content: center;
   font-weight: 700;
-  border: 1px solid blue;
   padding: 10px;
 }
 
@@ -144,8 +149,8 @@ h4 {
 
 .popup {
   position: fixed;
-  top: 30%;
-  left: 80%;
+  top: 60%;
+  left: 50%;
   transform: translate(-50%, -50%);
   width: 100%;
   max-width: 40%;
