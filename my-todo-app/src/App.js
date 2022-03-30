@@ -10,10 +10,9 @@ function App() {
   useEffect(() => {
     GetTodos();
   }, []);
-  console.log(todos);
 
   const GetTodos = () => {
-    fetch(`${API}/todos`)
+    fetch(API + "/todos/")
       .then((res) => res.json())
       .then((data) => setTodos(data))
       .catch((err) => console.error("Error : ", err));
@@ -34,11 +33,13 @@ function App() {
   };
 
   const deleteTodo = async (id) => {
+    console.log("string delete");
     const data = await fetch(API + "/todos/delete/" + id, {
       method: "DELETE",
     }).then((res) => res.json());
 
     setTodos((todos) => todos.filter((todo) => todo._id !== data._id));
+    GetTodos();
   };
 
   const addTodo = async () => {
@@ -61,20 +62,27 @@ function App() {
       <h4>Your Tasks</h4>
 
       <div className="todos">
-        {todos.length > 0 &&
+        {todos.length > 0 ? (
           todos.map((todo) => (
-            <div
-              className={"todo " + (todo.complete ? "is-complete" : "")}
-              key={todo._id}
-              onClick={() => completeTodo(todo._id)}
-            >
-              <div className="checkbox"></div>
-              <div className="text">{todo.text}</div>
-              <div className="delete-todo" onClick={() => deleteTodo(todo._id)}>
+            <div key={todo._id} className="todo">
+              <div
+                className={"db" + (todo.complete ? " is-complete" : "")}
+                onClick={() => completeTodo(todo._id)}
+              >
+                <div className="checkbox"></div>
+                <div className="text">{todo.text}</div>
+              </div>
+              <div
+                className={"delete-todo" + (todo.complete ? " is-done" : "")}
+                onClick={() => deleteTodo(todo._id)}
+              >
                 x
               </div>
             </div>
-          ))}
+          ))
+        ) : (
+          <p>You currently have no tasks</p>
+        )}
       </div>
       <div className="addPopup" onClick={() => setPopupActive(true)}>
         +

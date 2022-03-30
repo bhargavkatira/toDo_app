@@ -6,22 +6,22 @@ POST http://localhost:3001/todos/new
 Content-Type: application/json
 
 {
-    "text" : "order burger"
+    "text" : "order pizza"
 }
 
 ###
 
-DELETE http://localhost:3001/todos/delete/6241a5056c93fe49b589cd86
+DELETE http://localhost:3001/todos/delete/6243fad1f6537edbaa6f383f
 
 ###
 
 
-GET http://localhost:3001/todo/complete/6241a5056c93fe49b589cd86
+GET http://localhost:3001/todos/complete/6243f1bac9b674fd2482a40d
 
 
 
 ###
-PUT http://localhost:3001/todos/complete/6241bb62e76c0b08e108131e Content-Type : application/json
+PUT http://localhost:3001/todos/complete/6243f1bac9b674fd2482a40d
 
 {
 "text": "Go get chocolates"

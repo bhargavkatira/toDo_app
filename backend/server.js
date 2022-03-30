@@ -38,13 +38,22 @@ app.post("/todos/new", (req, res) => {
 app.delete("/todos/delete/:id", async (req, res) => {
   const result = await Todo.findByIdAndDelete(req.params.id);
 
-  res.json(result);
+  res.json({ result });
 });
-
-app.put("/todos/complete/:id", async (req, res) => {
+app.get("/todos/complete/:id", async (req, res) => {
   const todo = await Todo.findById(req.params.id);
 
-  todo.complete != todo.complete;
+  todo.complete = !todo.complete;
+
+  todo.save();
+
+  res.json(todo);
+});
+
+app.put("/todos/update/:id", async (req, res) => {
+  const todo = await Todo.findById(req.params.id);
+
+  todo.text = req.body.text;
   todo.save();
   res.json(todo);
 });

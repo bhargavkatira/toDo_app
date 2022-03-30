@@ -35,11 +35,24 @@ h4 {
   font-weight: 400;
   margin-bottom: 16px;
 }
+/*---todo-begins---*/
 
+.todos {
+  background-image: linear-gradient(
+    to bottom right,
+    var(--secondary),
+    var(--light)
+  );
+  width: 70%;
+  margin: auto;
+  border-radius: 10px;
+  padding: 16px;
+}
 .todo {
+  width: 80%;
+  margin: auto;
   position: relative;
   background-color: var(--dark);
-  padding: 16px;
   border-radius: 16px;
   display: flex;
   align-items: center;
@@ -51,7 +64,7 @@ h4 {
 .todo:hover {
   opacity: 0.8;
 }
-
+/*---todo-checkbox---begins---*/
 .todo .checkbox {
   width: 20px;
   height: 20px;
@@ -61,8 +74,8 @@ h4 {
   background-image: linear-gradient(to bottom, transparent, transparent);
   transition: 0.4s;
 }
-
-.todo .is-complete .checkbox {
+/*---todo-complete-true---begins---*/
+.is-complete .checkbox {
   background-color: var(--primary);
   background-image: linear-gradient(
     to bottom,
@@ -74,12 +87,22 @@ h4 {
 .todo .text {
   font-size: 20px;
 }
-
-.todo.is-complete .text {
-  text-decoration: line-through;
+.db {
+  display: flex;
+  /* border: 1px solid goldenrod; */
+  width: 90%;
+  padding: 10px;
 }
 
-.todo .delete-todo {
+.is-complete {
+  text-decoration: line-through;
+}
+.is-done {
+  visibility: hidden;
+}
+
+/*---todo-delete---*/
+.todos .delete-todo {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
@@ -93,16 +116,17 @@ h4 {
   align-items: center;
   justify-content: center;
   font-weight: 700;
+  border: 1px solid blue;
+  padding: 10px;
 }
 
 .addPopup {
   position: fixed;
-  bottom: 32px;
+  top: 32px;
   right: 32px;
   display: flex;
   align-items: center;
   justify-content: center;
-
   width: 64px;
   height: 64px;
   border-radius: 999px;
@@ -120,13 +144,16 @@ h4 {
 
 .popup {
   position: fixed;
-  top: 50%;
-  left: 50%;
+  top: 30%;
+  left: 80%;
   transform: translate(-50%, -50%);
-
   width: 100%;
-  max-width: 400px;
-  background-color: var(--light);
+  max-width: 40%;
+  background-image: linear-gradient(
+    to bottom right,
+    var(--secondary),
+    var(--light-alt)
+  );
   padding: 32px;
   border-radius: 16px;
   box-shadow: 0px 4px 32px var(--dark);
