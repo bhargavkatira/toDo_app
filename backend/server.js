@@ -6,9 +6,17 @@ const cors = require("cors");
 
 const app = express();
 
+const helmet = require("helmet");
+
 app.use(express.json());
 
-app.use(cors());
+app.use(
+  cors({
+    origin: "http://localhost:3000",
+  })
+);
+
+app.use(helmet());
 
 const Todo = require("./models/Todo");
 
@@ -21,29 +29,36 @@ mongoose
   .catch(console.error);
 
 app.get("/todos", async (req, res) => {
-  const todos = await Todo.find();
-
+  let todos = await Todo.find({ status: { $in: ["pending", "complete"] } });
+  // console.log(todos);
+  // todos = todos.filter((item) => {
+  //   return ["complete", "pending"].includes(item.status);
+  // });
   res.json(todos);
 });
 
 app.post("/todos/new", (req, res) => {
+  // console.log(req.body);
   const todo = new Todo({
-    text: req.body.text,
+    text: req.body.newTodo,
   });
   todo.save();
 
   res.json(todo);
 });
 
-app.delete("/todos/delete/:id", async (req, res) => {
-  const result = await Todo.findByIdAndDelete(req.params.id);
+app.post("/todos/delete/", async (req, res) => {
+  const result = await Todo.findById(req.body.id);
+  result.status = "deleted";
 
+  result.save();
   res.json({ result });
 });
+
 app.get("/todos/complete/:id", async (req, res) => {
   const todo = await Todo.findById(req.params.id);
 
-  todo.complete = !todo.complete;
+  todo.status = "complete";
 
   todo.save();
 

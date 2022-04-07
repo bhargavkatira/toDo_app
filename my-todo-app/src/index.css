@@ -20,6 +20,7 @@ body {
 
 .App {
   padding: 32px;
+  text-align: center;
 }
 
 h1 {
@@ -34,6 +35,23 @@ h4 {
   text-transform: uppercase;
   font-weight: 400;
   margin-bottom: 16px;
+}
+.login-page {
+  padding: 32px;
+  text-align: center;
+}
+
+.login-page button {
+  font-size: 18px;
+  text-transform: uppercase;
+  color: var(--light);
+  background-color: var(--dark);
+  border: none;
+  width: 10%;
+  margin-top: 15%;
+}
+.login-page :hover {
+  cursor: pointer;
 }
 /*---todo-begins---*/
 

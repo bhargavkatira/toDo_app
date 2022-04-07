@@ -5,9 +5,10 @@ const TodoSchema = new Schema({
   text: {
     type: String,
   },
-  complete: {
-    type: Boolean,
-    default: false,
+  status: {
+    type: String,
+    enum: ["pending", "complete", "deleted"],
+    default: "pending",
   },
   timestamp: {
     type: String,
